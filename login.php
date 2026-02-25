@@ -51,14 +51,17 @@ if (isset($_POST['login'])) {
 
         <div class="login-logo">
             <img src="assets/images/kktm-logo.jpg" alt="KKTM Logo">
-            <h1 class="system-name">Helpdesk System</h1>
+            <div class="logo-text">
+                <h1 class="system-name">Helpdesk System</h1>
+            </div>
         </div>
 
-        <p class="login-subtitle">A Support Portal for Classroom & Laboratoty Facilities</p>
+        <p class="login-subtitle">A Support Portal for Classroom & Laboratory Facilities</p>
 
-        <h2>Login</h2>
-
-        <p class="login-hint">Admin / Technician / User access supported</p>
+        <div class="login-title">
+            <h2>Login</h2>
+            <p class="login-hint">Admin / Technician / User access supported</p>
+        </div>
 
         <form method="POST">
             <div class="form-group">
@@ -68,9 +71,10 @@ if (isset($_POST['login'])) {
 
             <div class="form-group">
                 <label for="password">Password</label>
-            <div class="password-wrapper">
-                <input type="password" id="password" name="password" placeholder="Enter your password" required>
-                <span class="toggle-password" onclick="togglePassword()" aria-label="Show password">👁</span>
+                <div class="password-wrapper">
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    <span class="toggle-password" onclick="togglePassword()" aria-label="Show password">👁</span>
+                </div>
             </div>
 
             <button type="submit" name="login" class="btn-login">
@@ -80,18 +84,12 @@ if (isset($_POST['login'])) {
 
         <?php
         if (isset($error)) {
-            echo "<p class='error'>$error</p>";
+            echo "<div class='error'>$error</div>";
         }
         ?>
 
     </div>
 </div>
-
-<?php
-if (isset($error)) {
-    echo "<p style='color:red;'>$error</p>";
-}
-?>
 
 <script>
 function togglePassword() {
