@@ -23,13 +23,15 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
     </div>
 </div>
 
-<h2>Admin Dashboard</h2>
-<a href="add_user.php" class="action-link">➕ Add New User</a>
-<br><br>
-<p>
-  Welcome <?= htmlspecialchars($_SESSION['name']) ?>
-  <span class="role-badge role-admin">ADMIN</span>
-</p>
+<div class="header dashboard-header">
+    <div>
+        <h2>Admin Dashboard</h2>
+        <p>Welcome <?= htmlspecialchars($_SESSION['name']) ?> <span class="role-badge role-admin">ADMIN</span></p>
+    </div>
+    <div>
+        <a href="add_user.php" class="action-link" style="background: white; color: #2c3e50; padding: 8px 15px; border-radius: 4px; text-decoration: none;">➕ Add New User</a>
+    </div>
+</div>
 
 <?php
 $open = mysqli_fetch_assoc(
@@ -45,10 +47,19 @@ $done = mysqli_fetch_assoc(
 )['total'];
 ?>
 
-<div class="stats">
-    <div class="card open">Open: <?= $open ?></div>
-    <div class="card progress">In Progress: <?= $progress ?></div>
-    <div class="card done">Completed: <?= $done ?></div>
+<div class="summary-grid">
+    <div class="summary-card open">
+        <h3><?= $open ?></h3>
+        <p>Open</p>
+    </div>
+    <div class="summary-card progress">
+        <h3><?= $progress ?></h3>
+        <p>In Progress</p>
+    </div>
+    <div class="summary-card done">
+        <h3><?= $done ?></h3>
+        <p>Completed</p>
+    </div>
 </div>
 
 <?php
